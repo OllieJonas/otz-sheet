@@ -1,0 +1,23 @@
+/* Heavily Based on MrTipson's Builds page
+   See here: https://github.com/MrTipson/otz-builds/blob/master/css/stylesheet.css
+ */
+:root {
+    --bg-primary: rgb(49, 49, 49);
+    --bg-secondary: rgb(36, 36, 36);
+    --bg-darken: rgba(0, 0, 0, 0.4);
+    --text-normal: rgb(220, 220, 220);
+    --text-strong: white;
+}
+html {
+    scroll-padding-top: 20px;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-primary);
+    color: var(--text-normal);
+    font-family: monospace;
+    font-size: 13pt;
+    height: 100%;
+}
