@@ -24,12 +24,12 @@ export interface BaseSpreadsheetCharacter {
 
 export interface Guides {}
 
-interface KillerGuides extends Guides {
+export interface KillerGuides extends Guides {
     latest_tier_list: string,
     which_killer: string,
 }
 
-interface SurvivorGuides extends Guides {
+export interface SurvivorGuides extends Guides {
 
 }
 
