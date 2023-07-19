@@ -39,12 +39,12 @@ export interface Spreadsheet<T extends BaseSpreadsheetCharacter, V extends Guide
     guides: V
 }
 
-export interface SpreadsheetKiller {
+export interface SpreadsheetKiller extends BaseSpreadsheetCharacter {
     movement_speed: string
     terror_radius: string
 }
 
-export interface SpreadsheetSurvivor {
+export interface SpreadsheetSurvivor extends BaseSpreadsheetCharacter {
     stealth: string
     noise: string
     cries: string

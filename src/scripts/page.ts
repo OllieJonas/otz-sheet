@@ -1,4 +1,4 @@
-import {BaseSpreadsheetCharacter, Guides, Spreadsheet, SpreadsheetKiller, KillerGuides} from './interfaces'
+import {BaseSpreadsheetCharacter, Guides, Spreadsheet, SpreadsheetKiller, KillerGuides} from './types'
 
 const GITHUB_BASE: string = "https://raw.githubusercontent.com/OllieJonas/scrape-dbd-perks/master/out/"
 const KILLER_SPREADSHEET_URL = GITHUB_BASE + "killer_spreadsheet_LATEST.json"
