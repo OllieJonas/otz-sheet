@@ -1,6 +1,13 @@
 {
   "name": "otz-spreadsheet-website",
   "version": "1.0.0",
+  "private": true,
+  "keywords": [],
+  "author": "OllieJonas",
+  "license": "MIT",
   "dependencies": {
+    "webpack": "^5.88.2",
+    "webpack-cli": "latest",
+    "handlebars": "latest"
   }
 }

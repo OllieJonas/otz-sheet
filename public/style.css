@@ -9,6 +9,7 @@
     --text-strong: white;
 }
 html {
+    scroll-behavior: smooth;
     scroll-padding-top: 20px;
     height: 100%;
 }
@@ -20,4 +21,36 @@ body {
     font-family: monospace;
     font-size: 13pt;
     height: 100%;
+}
+
+.header {
+    align-self: center;
+    padding: 10px;
+}
+
+
+.characters {
+    align-self: center;
+    padding: 10px;
+    min-width: 256px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-around;
+}
+
+/* FOOTER */
+.footer {
+    width: calc(100% - 20px);
+    padding: 20px;
+    background-color: var(--bg-darken);
+    text-align: center;
+    margin: 10px;
+    border-radius: 8px;
+}
+.footer img {
+    max-width: 24px;
+    max-height: 24px;
+}
+.footer > div {
+    margin: 10px;
 }

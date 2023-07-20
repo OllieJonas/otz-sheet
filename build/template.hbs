@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Otz's Killer and Survivor Information</title>
+
+    <link rel="stylesheet" href="../public/style.css">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <script src="../dist/page.js"></script>
+</head>
+
+<body>
+<div class="body">
+    <div class="header">
+        <h2>Otzdarva's Killer & Survivor Perk Guide</h2>
+        <h4>Last updated: 13/7/23</h4>
+    </div>
+</div>
+
+<div class="tabs">
+    <input type="radio" name="role" id="selectKillers" value="killer" checked="">
+    <label for="selectKillers">
+        <img src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/0/06/IconHelpLoading_killer.png" alt="Killers">
+        Killers
+    </label>
+
+    <input type="radio" name="role" id="selectSurvivors" value="survivor">
+    <label for="selectKillers">
+        <img src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/b/b3/IconHelpLoading_survivor.png" alt="Survivors">
+        Survivors
+    </label>
+</div>
+
+<div class="characters" id="killers">
+    {{#each killers.characters}}
+        <div class="character" id="{{name}}">
+            <h3 class="characterName">{{name}}</h3>
+            <img src="{{icon}}" alt="The {{name}}" loading="lazy">
+            {{#each perks}}
+                <div class="perk" id="{{name}}">
+                    {{#if is_exhaustion_perk}}
+                        <div class="exhaustionIcon"><img src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/e/ef/IconStatusEffects_exhausted.png" alt="Exhaustion Symbol"></div>
+                    {{/if}}
+                    <div class="perkImage"><img src="{{icon}}" alt="{{name}}"></div>
+                    <p>{{name}}</p>
+                </div>
+            {{/each}}
+            <h6>{{availability}}</h6>
+            <h6>{{movement_speed}}</h6>
+            <h6>{{terror_radius}}</h6>
+        </div>
+    {{/each}}
+</div>
+
+<div class="footer">
+    <div>
+        Images, perks and character descriptions are obtained from the
+        <a href="https://deadbydaylight.fandom.com/wiki/Dead_by_Daylight_Wiki">Dead by Daylight Wiki.</a>
+    </div>
+    <div>
+        This page has been based on the <a href="https://otzdarva.com/builds">Builds</a> page.
+    </div>
+    <div>
+        <a href="https://github.com/OllieJonas" title="GitHub"><img src="../assets/images/github.png" alt="GitHub"></a>
+        <a href="https://twitch.tv/otzdarva" title="Twitch"><img src="../assets/images/twitch.png" alt="Twitch"></a>
+        <a href="https://discord.gg/otzdarva" title="Discord"><img src="../assets/images/discord.png" alt="Discord"></a>
+        <a href="https://youtube.com/channel/UCUhGCdMIFqcRlHb_dthD5Xw" title="YouTube"><img src="../assets/images/youtube.png" alt="YouTube"></a>
+        <a href="https://twitter.com/otzdarvayt" title="GitHub"><img src="../assets/images/twitter.png" alt="Twitter"></a>
+    </div>
+</div>
+</body>
+</html>
