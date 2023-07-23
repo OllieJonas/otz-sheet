@@ -17,7 +17,8 @@
 <div class="body">
     <div class="header">
         <h2 class="title">Otzdarva's Killer & Survivor Perk Guide</h2>
-        <h4 class="lastUpdated">Last updated: {{last_updated}}</h4>
+        <h4 class="lastUpdated">Last updated (Website): {{last_updated.application}}</h4>
+        <h4 class="lastUpdated">Last updated (Spreadsheet): {{last_updated.spreadsheet}}</h4>
     </div>
 </div>
 
@@ -38,20 +39,24 @@
 <div class="characters" id="killers">
     {{#each killers.characters}}
         <div class="character" id="{{name}}">
-            <h3 class="characterName">{{name}}</h3>
-            <img src="{{icon}}" alt="The {{name}}" loading="lazy">
-            {{#each perks}}
-                <div class="perk" id="{{name}}">
-                    {{#if is_exhaustion_perk}}
-                        <div class="exhaustionIcon"><img src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/e/ef/IconStatusEffects_exhausted.png" alt="Exhaustion Symbol"></div>
-                    {{/if}}
-                    <div class="perkImage"><img src="{{icon}}" alt="{{name}}"></div>
-                    <p>{{name}}</p>
-                </div>
-            {{/each}}
-            <h6>{{availability}}</h6>
-            <h6>{{movement_speed}}</h6>
-            <h6>{{terror_radius}}</h6>
+            <div class="nameAvailability"><h3 class="name">{{name}}</h3><h6 style="background-color: rgb({{availability.colour.red}} {{availability.colour.green}} {{availability.colour.blue}})" class="availability">{{availability.value}}</h6></div>
+            <div class="metaInfo">
+                <div class="movementSpeed"><h6 class="movementSpeedText">{{movement_speed}}</h6> <img class="miscImage" src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/b/b4/IconHelp_movementSpeed.png" alt="terrorRadiusImage"></div>
+                <div class="terrorRadius"><h6 class="terrorRadiusText">{{terror_radius}}</h6> <img class="miscImage" src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/e/e0/IconHelp_terrorRadius.png" alt="terrorRadiusImage"></div>
+            </div>
+            <img class="characterIcon" src="{{icon}}" alt="The {{name}}" loading="lazy">
+            <div class="perks">
+                {{#each perks}}
+                    <div style="background-color: rgb({{tier.red}} {{tier.green}} {{tier.blue}})" class="perk-{{@index}}" id="{{name}}">
+                        {{#if is_exhaustion_perk}}
+                            <div class="exhaustionIcon"><img src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/e/ef/IconStatusEffects_exhausted.png" alt="Exhaustion Symbol"></div>
+                        {{/if}}
+                        <img class="perkIcon" src="{{icon}}" alt="{{name}}"><p class="perkName">{{name}}</p>
+                    </div>
+                {{/each}}
+            </div>
+
+
         </div>
     {{/each}}
 </div>
