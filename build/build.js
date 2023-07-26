@@ -17,5 +17,5 @@ handlebars.registerHelper("linearGradient", function(direction, red, green, blue
         `linear-gradient(${direction}, ${from}, ${to})`)
 });
 
-const template = handlebars.compile(fs.readFileSync("./build/template.hbs", {encoding: 'utf8', flag: 'r'}))
+const template = handlebars.compile(fs.readFileSync("template.hbs", {encoding: 'utf8', flag: 'r'}))
 buildPage().then(data => fs.writeFileSync("./dist/index.html", template(data)))
