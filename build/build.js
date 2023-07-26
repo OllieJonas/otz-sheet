@@ -18,4 +18,4 @@ handlebars.registerHelper("linearGradient", function(direction, red, green, blue
 });
 
 const template = handlebars.compile(fs.readFileSync("template.hbs", {encoding: 'utf8', flag: 'r'}))
-buildPage().then(data => fs.writeFileSync("./dist/index.html", template(data)))
+buildPage().then(data => fs.writeFileSync("../dist/index.html", template(data)))
