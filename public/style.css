@@ -15,6 +15,11 @@
     --color-anchoring: #ff6100;
     --header-height: 40px;
 }
+
+.textStrong { color: var(--text-strong); }
+.textNormal { color: var(--text-normal); }
+.textWeak { color: var(--text-weak); }
+
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 20px;
@@ -30,22 +35,54 @@ body {
     height: 100%;
 }
 
+a {
+    text-decoration: none;
+    color: cyan;
+
+}
+
+h2 {
+    font-size: 2rem;
+    margin: .75rem 0;
+    text-underline-offset: 4px;
+    padding-bottom: 0;
+}
+h3 {
+    font-size: 1.2em;
+}
+h4 {
+    padding-top: 0;
+}
+h2, h3, h4 {
+    width: 100%;
+    text-align: center;
+}
+
+.blur > .body {
+    filter: blur(5px) brightness(0.5);
+    background-color: red;
+}
+
+.blur {
+    overflow: hidden;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
 .header {
     align-self: center;
     padding: 0;
     text-align: center;
 }
 
-h2 {
-    padding-bottom: 0;
-}
-h4 {
-    padding-top: 0;
-}
-
 /* TAB */
 .tabs {
-    width: 15%;
+    width: 100%;
     display: grid;
     grid-template:
 		"labels labels"
@@ -65,21 +102,10 @@ h4 {
 input[type="radio"] {
     display: none;
 }
+
 label[for="selectKillers"] {
     justify-self: end;
 }
-input#selectKillers:checked + label,
-input#selectSurvivors:checked + label {
-    --character: var(--color-killer);
-    outline: 2px solid var(--character);
-    outline-offset: 2px;
-    border-radius: 8px;
-}
-input#selectSurvivors:checked + label { --character: var(--color-survivor); }
-input#selectKillers:checked ~ .survivorTab { display: none; }
-input#selectKillers:checked ~ .killerTab{ --character: var(--color-killer); }
-input#selectSurvivors:checked ~ .killerTab { display: none; }
-input#selectSurvivors:checked ~ .survivorTab{ --character: var(--color-survivor); }
 
 
 .tabs > label {
@@ -89,6 +115,33 @@ input#selectSurvivors:checked ~ .survivorTab{ --character: var(--color-survivor)
     gap: 10px;
     padding: 0 10px;
     width: fit-content;
+}
+
+input#selectKillers:checked + label,
+input#selectSurvivors:checked + label {
+    --character: var(--color-killer);
+    outline: 2px solid var(--character);
+    outline-offset: 2px;
+    border-radius: 8px;
+}
+
+input#selectSurvivors:checked + label { --character: var(--color-survivor); }
+input#selectKillers:checked ~ .survivorTab { display: none; }
+input#selectKillers:checked ~ .killerTab{ --character: var(--color-killer); }
+input#selectSurvivors:checked ~ .killerTab { display: none; }
+input#selectSurvivors:checked ~ .survivorTab{ --character: var(--color-survivor); }
+
+.tabs > label {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
+    width: fit-content;
+}
+label > img {
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 label > img {
@@ -138,9 +191,9 @@ label > img {
 .character > .row-2 {
     grid-area: row-2;
     display: grid;
-    grid-template-areas: 'icon perk-0'
-                         'icon perk-1'
-                         'icon perk-2';
+    grid-template-areas: 'icon perk'
+                         'icon perk'
+                         'icon perk';
 
     grid-template-columns: auto 1fr;
     grid-template-rows: auto;
@@ -155,6 +208,7 @@ label > img {
     align-items: center;
     height: 60px;
     padding-left: 10px;
+    filter: drop-shadow(2px 2px 4px black);
 }
 
 .character > .row-1 > .nameAvailability > .name {
@@ -204,12 +258,13 @@ label > img {
     /*width: 244px;*/
 }
 
-/* perk border */
-.character > .row-2 > .perks div {
+.character > .row-2 > .perks > .perk {
+    grid-area: perk;
     margin: 5px;
     padding: 5px;
     border-radius: 5px;
     position: relative;
+    cursor: pointer;
 }
 
 .character .exhaustionIcon {
@@ -218,11 +273,13 @@ label > img {
     position: absolute;
     top: 0;
     right: 5px;
+    filter: drop-shadow(2px 2px 4px black);
 }
 
 .character .perkIcon {
     max-height: 64px;
     max-width: 64px;
+    filter: drop-shadow(2px 2px 4px black);
 }
 
 .character .perkName {
@@ -234,16 +291,43 @@ label > img {
     vertical-align: middle;
 }
 
-.character .perk-0 {
-    grid-area: perk-0;
+/* MODAL */
+.modalbg {
+    background-color: rgba(0, 0, 0, 0.66);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
 }
 
-.character .perk-1 {
-    grid-area: perk-1;
+.characterBackground {
+    background: transparent no-repeat bottom left;
+    filter: drop-shadow(4px 4px 8px black);
 }
 
-.character .perk-2 {
-    grid-area: perk-2;
+.perkModal {
+    padding: 20px 40px;
+    width: 60%;
+    height: fit-content;
+    max-height: 90%;
+    overflow-y: auto;
+    border-radius: 8px;
+    background-color: var(--bg-secondary);
+}
+
+.perkCharacter {
+    margin-top: -10px;
+}
+
+.modalPerkImage {
+    float: right;
+    filter: drop-shadow(4px 4px 8px black);
 }
 
 /* FOOTER */

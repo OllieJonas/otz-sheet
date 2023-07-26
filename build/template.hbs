@@ -11,98 +11,185 @@
     <link rel="stylesheet" href="../public/style.css">
     <link rel="icon" type="image/png" href="../assets/images/favicon.png">
     <script src="../dist/page.js"></script>
+
+    <!--    MODALS    -->
+    <!--    killer example template    -->
+    <template id="killerExampleTemplate">
+        <div class="modelbg">
+            <div class="character" id="example-killer">
+                <div class="row-1">
+                    <div class="nameAvailability"><h3 class="name">Name</h3><h6 style="background-image: {{linearGradient 'to right' 106 168 79 0.6}}" class="availability">Availability</h6></div>
+                    <div class="metaInfo">
+                        <div class="miscEntryLeftmost"><h6 class="miscText">Movement Speed</h6> <img class="miscImage" src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/b/b4/IconHelp_movementSpeed.png" alt="movementSpeedImage"></div>
+                        <div class="miscEntry"><h6 class="miscText">Terror Radius</h6> <img class="miscImage" src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/e/e0/IconHelp_terrorRadius.png" alt="terrorRadiusImage"></div>
+                    </div>
+                </div>
+                <div class="row-2">
+                    <p class="characterIcon">Portrait</p>
+                    <div class="perks">
+                            <div style="background-image: linear-gradient(155deg, rgba(91, 15, 0, 1.0), rgba(91, 15, 0, 0.3))" class="perk" id="red-example-killer" data-role="killers" data-perkname="example-perk" data-character="example-character">
+                                <p class="perkIcon">Red</p><p class="perkName">Weak / Niche Perk</p>
+                            </div>
+                        <div style="background-image: linear-gradient(155deg, rgba(191, 144, 0, 1.0), rgba(191, 144, 0, 0.3))" class="perk" id="yellow-example-killer" data-role="killers" data-perkname="example-perk" data-character="example-character">
+                            <p class="perkIcon">Yellow</p><p class="perkName">Decent Perk</p>
+                        </div>
+                        <div style="background-image: linear-gradient(155deg, rgba(56, 118, 29, 1.0), rgba(56, 118, 29, 0.3))" class="perk" id="green-example-killer" data-role="killers" data-perkname="example-perk" data-character="example-character">
+                            <p class="perkIcon">Green</p><p class="perkName">Strong / Useful Perk</p>
+                        </div>
+                        <div style="background-image: linear-gradient(155deg, rgba(17, 85, 204, 1.0), rgba(17, 85, 204, 0.3))" class="perk" id="blue-example-killer" data-role="killers" data-perkname="example-perk" data-character="example-character">
+                            <p class="perkIcon">Blue</p><p class="perkName">Meta Perk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <!--    survivor example template    -->
+    <template id="survivorExampleTemplate">
+        <div class="modelbg">
+            <div class="character" id="example-survivor">
+                <div class="row-1">
+                    <div class="nameAvailability"><h3 class="name">Name</h3><h6 style="background-image: {{linearGradient 'to right' 106 168 79 0.6}}" class="availability">Availability</h6></div>
+                    <div class="metaInfo">
+                        <div class="miscEntryLeftmost"><h6 class="miscText">Stealth</h6> <img class="miscImage" src="../assets/images/survivor_stealth.png" alt="stealthIcon"></div>
+                        <div class="miscEntry"><h6 class="miscText">Healthy Noises</h6> <img class="miscImage" src="../assets/images/icon_healthy.png" alt="healthyIcon"></div>
+                        <div class="miscEntry"><h6 class="miscText">Injured Noises</h6> <img class="miscImage" src="../assets/images/icon_injured.png" alt="injuredIcon"></div>
+                    </div>
+                </div>
+                <div class="row-2">
+                    <p class="characterIcon">Portrait</p>
+                    <div class="perks">
+                        <div style="background-image: linear-gradient(155deg, rgba(91, 15, 0, 1.0), rgba(91, 15, 0, 0.3))" class="perk" id="red-example-survivor" data-role="survivors" data-perkname="example-perk" data-character="example-character">
+                            <p class="perkIcon">Red</p><p class="perkName">Weak / Niche Perk</p>
+                        </div>
+                        <div style="background-image: linear-gradient(155deg, rgba(191, 144, 0, 1.0), rgba(191, 144, 0, 0.3))" class="perk" id="yellow-example-survivor" data-role="survivors" data-perkname="example-perk" data-character="example-character">
+                            <p class="perkIcon">Yellow</p><p class="perkName">Decent Perk</p>
+                        </div>
+                        <div style="background-image: linear-gradient(155deg, rgba(56, 118, 29, 1.0), rgba(56, 118, 29, 0.3))" class="perk" id="green-example-survivor" data-role="survivors" data-perkname="example-perk" data-character="example-character">
+                            <p class="perkIcon">Green</p><p class="perkName">Strong / Useful Perk</p>
+                        </div>
+                        <div style="background-image: linear-gradient(155deg, rgba(17, 85, 204, 1.0), rgba(17, 85, 204, 0.3))" class="perk" id="blue-example-survivor" data-role="survivors" data-perkname="example-perk" data-character="example-character">
+                            <p class="perkIcon">Blue</p><p class="perkName">Meta Perk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p><b>Stealth: </b>Character size and visibility when using their darkest cosmetics.</p>
+                <p><b>Healthy Noises: </b>Noise made when standing still, running and performing actions.</p>
+                <p><b>Injured Noises: </b> Loudness, clarity and consistency of grunts when injured.</p>
+
+            </div>
+        </div>
+    </template>
+    <!--    perk    -->
+    <template id="perkInfo">
+        <div class="modalbg">
+            <div class="perkModal">
+                <div class="characterBackground">
+                    <h2 class="perkName"></h2>
+                    <h4 class="perkCharacter textWeak"></h4>
+                    <p class="perkDescription"></p>
+                </div>
+            </div>
+        </div>
+    </template>
 </head>
 
 <body>
-<div class="body">
-    <div class="header">
-        <h2 class="title">Otzdarva's Killer & Survivor Perk Guide</h2>
-        <h4 class="lastUpdated">Last updated (Website): {{last_updated.application}}</h4>
-        <h4 class="lastUpdated">Last updated (Spreadsheet): {{last_updated.spreadsheet}}</h4>
-    </div>
-</div>
+    <div class="body">
+        <div class="header">
+            <h2 class="title textStrong">Otzdarva's Killer & Survivor Perk Guide</h2>
+            <h4 class="lastUpdated textWeak">Last updated (Website): {{last_updated.application}}</h4>
+            <h4 class="lastUpdated textWeak">Last updated (Spreadsheet): {{last_updated.spreadsheet}}</h4>
+        </div>
 
-<div class="tabs">
-    <input type="radio" name="role" id="selectKillers" value="killer" checked="">
-    <label for="selectKillers">
-        <img src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/0/06/IconHelpLoading_killer.png" alt="Killers">
-        Killers
-    </label>
+        <div class="tabs">
+            <input type="radio" name="role" id="selectKillers" value="killer" checked="">
+            <label for="selectKillers">
+                <img src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/0/06/IconHelpLoading_killer.png" alt="Killers">
+                Killers
+            </label>
 
-    <input type="radio" name="role" id="selectSurvivors" value="survivor">
-    <label for="selectKillers">
-        <img src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/b/b3/IconHelpLoading_survivor.png" alt="Survivors">
-        Survivors
-    </label>
-</div>
+            <input type="radio" name="role" id="selectSurvivors" value="survivor">
+            <label for="selectSurvivors">
+                <img src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/b/b3/IconHelpLoading_survivor.png" alt="Survivors">
+                Survivors
+            </label>
 
-<div class="characters" id="killers">
-    {{#each killers.characters as |character|}}
-        <div class="character" id="{{name}}">
-            <div class="row-1">
-                <div class="nameAvailability"><h3 class="name">{{name}}</h3><h6 style="background-image: {{linearGradient 'to right' availability.colour.red availability.colour.green availability.colour.blue 0.6}}" class="availability">{{availability.value}}</h6></div>
-                <div class="metaInfo">
-                    <div class="miscEntryLeftmost"><h6 class="miscText">{{movement_speed}}</h6> <img class="miscImage" src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/b/b4/IconHelp_movementSpeed.png" alt="movementSpeedImage"></div>
-                    <div class="miscEntry"><h6 class="miscText">{{terror_radius}}</h6> <img class="miscImage" src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/e/e0/IconHelp_terrorRadius.png" alt="terrorRadiusImage"></div>
+            <div class="killerTab">
+                <div class="characters" id="killers">
+                    {{#each killers.characters as |character|}}
+                        <div class="character" id="The_{{name}}">
+                            <div class="row-1">
+                                <div class="nameAvailability"><h1 class="name">The {{name}}</h1><h6 style="background-image: {{linearGradient 'to right' availability.colour.red availability.colour.green availability.colour.blue 0.6}}" class="availability">{{availability.value}}</h6></div>
+                                <div class="metaInfo">
+                                    <div class="miscEntryLeftmost"><h6 class="miscText">{{movement_speed}}</h6> <img class="miscImage" src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/b/b4/IconHelp_movementSpeed.png" alt="movementSpeedImage"></div>
+                                    <div class="miscEntry"><h6 class="miscText">{{terror_radius}}</h6> <img class="miscImage" src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/e/e0/IconHelp_terrorRadius.png" alt="terrorRadiusImage"></div>
+                                </div>
+                            </div>
+                            <div class="row-2">
+                                <img class="characterIcon" src="{{icon}}" alt="The {{name}}" loading="lazy">
+                                <div class="perks">
+                                    {{#each perks as |perk|}}
+                                        <div style="background-image: {{linearGradient '155deg' tier.red tier.green tier.blue 0.3}}" class="perk" id="{{name}}" data-role="killers" data-perkname="{{name}}" data-character="{{character.name}}">
+                                            <img class="perkIcon" src="{{icon}}" alt="{{name}}"><p class="perkName">{{name}}</p>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
                 </div>
             </div>
-            <div class="row-2">
-                <img class="characterIcon" src="{{icon}}" alt="The {{name}}" loading="lazy">
-                <div class="perks">
-                    {{#each perks as |perk|}}
-                        <div style="background-image: {{linearGradient '155deg' tier.red tier.green tier.blue 0.3}}" class="perk" id="{{name}}" data-role="killers" data-perkname="{{name}}" data-character="{{character.name}}">
-                            <img class="perkIcon" src="{{icon}}" alt="{{name}}"><p class="perkName">{{name}}</p>
+
+            <div class="survivorTab">
+                <div class="characters" id="survivors">
+                    {{#each survivors.characters as |character|}}
+                        <div class="character" id="{{name}}">
+                            <div class="row-1">
+                                <div class="nameAvailability"><h1 class="name">{{name}}</h1><h6 style="background-color: rgb({{availability.colour.red}} {{availability.colour.green}} {{availability.colour.blue}})" class="availability">{{availability.value}}</h6></div>
+                                <div class="metaInfo">
+                                    <div class="miscEntryLeftmost"><h6 class="miscText">{{stealth}}</h6> <img class="miscImage" src="../assets/images/survivor_stealth.png" alt="stealthIcon"></div>
+                                    <div class="miscEntry"><h6 class="miscText">{{noise}}</h6> <img class="miscImage" src="../assets/images/icon_healthy.png" alt="healthyIcon"></div>
+                                    <div class="miscEntry"><h6 class="miscText">{{cries}}</h6> <img class="miscImage" src="../assets/images/icon_injured.png" alt="injuredIcon"></div>
+                                </div>
+                            </div>
+                            <div class="row-2">
+                                <img class="characterIcon" src="{{icon}}" alt="The {{name}}" loading="lazy">
+                                <div class="perks">
+                                    {{#each perks as |perk|}}
+                                        <div style="background-image: {{linearGradient '155deg' tier.red tier.green tier.blue 0.3}}" class="perk" id="{{name}}" data-role="survivors" data-perkname="{{name}}" data-character="{{character.name}}">
+                                            {{#if is_exhaustion_perk}}
+                                                <img class="exhaustionIcon" src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/e/ef/IconStatusEffects_exhausted.png" alt="Exhaustion Symbol">
+                                            {{/if}}
+                                            <img class="perkIcon" src="{{icon}}" alt="{{name}}"><p class="perkName">{{name}}</p>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                            </div>
                         </div>
                     {{/each}}
                 </div>
             </div>
         </div>
-    {{/each}}
-</div>
 
-<div class="characters" id="survivors">
-    {{#each survivors.characters}}
-        <div class="character" id="{{name}}">
-            <div class="row-1">
-                <div class="nameAvailability"><h3 class="name">{{name}}</h3><h6 style="background-color: rgb({{availability.colour.red}} {{availability.colour.green}} {{availability.colour.blue}})" class="availability">{{availability.value}}</h6></div>
-                <div class="metaInfo">
-                    <div class="miscEntryLeftmost"><h6 class="miscText">{{stealth}}</h6> <img class="miscImage" src="../assets/images/survivor_stealth.png" alt="stealthIcon"></div>
-                    <div class="miscEntry"><h6 class="miscText">{{noise}}</h6> <img class="miscImage" src="../assets/images/icon_healthy.png" alt="healthyIcon"></div>
-                    <div class="miscEntry"><h6 class="miscText">{{cries}}</h6> <img class="miscImage" src="../assets/images/icon_injured.png" alt="injuredIcon"></div>
-                </div>
+        <div class="footer">
+            <div>
+                Images, perks and character descriptions are obtained from the
+                <a href="https://deadbydaylight.fandom.com/wiki/Dead_by_Daylight_Wiki">Dead by Daylight Wiki.</a>
             </div>
-            <div class="row-2">
-                <img class="characterIcon" src="{{icon}}" alt="The {{name}}" loading="lazy">
-                <div class="perks">
-                    {{#each perks}}
-                        <div style="background-image: {{linearGradient '155deg' tier.red tier.green tier.blue 0.3}}" class="perk-{{@index}}" id="{{name}}">
-                            {{#if is_exhaustion_perk}}
-                                <img class="exhaustionIcon" src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/e/ef/IconStatusEffects_exhausted.png" alt="Exhaustion Symbol">
-                            {{/if}}
-                            <img class="perkIcon" src="{{icon}}" alt="{{name}}"><p class="perkName">{{name}}</p>
-                        </div>
-                    {{/each}}
-                </div>
+            <div>
+                This page's formatting has been based on the <a href="https://otzdarva.com/builds">Builds</a> page.
+            </div>
+            <div>
+                <a href="https://github.com/OllieJonas" title="GitHub"><img src="../assets/images/github.png" alt="GitHub"></a>
+                <a href="https://twitch.tv/otzdarva" title="Twitch"><img src="../assets/images/twitch.png" alt="Twitch"></a>
+                <a href="https://discord.gg/otzdarva" title="Discord"><img src="../assets/images/discord.png" alt="Discord"></a>
+                <a href="https://youtube.com/channel/UCUhGCdMIFqcRlHb_dthD5Xw" title="YouTube"><img src="../assets/images/youtube.png" alt="YouTube"></a>
+                <a href="https://twitter.com/otzdarvayt" title="GitHub"><img src="../assets/images/twitter.png" alt="Twitter"></a>
             </div>
         </div>
-    {{/each}}
-</div>
-
-<div class="footer">
-    <div>
-        Images, perks and character descriptions are obtained from the
-        <a href="https://deadbydaylight.fandom.com/wiki/Dead_by_Daylight_Wiki">Dead by Daylight Wiki.</a>
     </div>
-    <div>
-        This page's formatting has been based on the <a href="https://otzdarva.com/builds">Builds</a> page.
-    </div>
-    <div>
-        <a href="https://github.com/OllieJonas" title="GitHub"><img src="../assets/images/github.png" alt="GitHub"></a>
-        <a href="https://twitch.tv/otzdarva" title="Twitch"><img src="../assets/images/twitch.png" alt="Twitch"></a>
-        <a href="https://discord.gg/otzdarva" title="Discord"><img src="../assets/images/discord.png" alt="Discord"></a>
-        <a href="https://youtube.com/channel/UCUhGCdMIFqcRlHb_dthD5Xw" title="YouTube"><img src="../assets/images/youtube.png" alt="YouTube"></a>
-        <a href="https://twitter.com/otzdarvayt" title="GitHub"><img src="../assets/images/twitter.png" alt="Twitter"></a>
-    </div>
-</div>
 </body>
 </html>
