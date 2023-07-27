@@ -118,6 +118,14 @@
             </label>
 
             <div class="killerTab">
+                <nav id="killerSidebar">
+                    <div class="sidebarTab sidebarLeft"></div>
+                    <div class="sidebarContent">
+                        {{#each killers.characters}}
+                            <a href="#The_{{name}}">The {{name}}</a>
+                        {{/each}}
+                    </div>
+                </nav>
                 <div class="characters" id="killers">
                     {{#each killers.characters as |character|}}
                         <div class="character" id="The_{{name}}">
@@ -144,6 +152,14 @@
             </div>
 
             <div class="survivorTab">
+                <nav id="survivorSidebar">
+                    <div class="sidebarTab sidebarLeft"></div>
+                    <div class="sidebarContent">
+                        {{#each survivors.characters}}
+                            <a href="#{{name}}">{{name}}</a>
+                        {{/each}}
+                    </div>
+                </nav>
                 <div class="characters" id="survivors">
                     {{#each survivors.characters as |character|}}
                         <div class="character" id="{{name}}">

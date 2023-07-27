@@ -13,6 +13,19 @@ async function getCharacters() {
     characters = JSON.parse(characters);
 }
 
+
+function prepareSidebar(sidebar) {
+    console.log(sidebar === null)
+    if (sidebar === null) return;
+    console.log("definitely not null!");
+
+    sidebar.addEventListener("click", function (event) {
+        if (event.target.tagName === "A") {
+            sidebar.classList.remove("open");
+        }
+    });
+}
+
 let modalDepth = 0;
 
 function showPerkDetails(dataset) {
@@ -55,6 +68,9 @@ function showPerkDetails(dataset) {
 getPerks();
 getCharacters();
 
+prepareSidebar(document.querySelector("#killerSidebar"));
+prepareSidebar(document.querySelector("#survivorSidebar"));
+
 document.addEventListener("click", function(event) {
     if (event.target.classList.contains("perk")) {
         showPerkDetails(event.target.dataset);
@@ -62,5 +78,8 @@ document.addEventListener("click", function(event) {
     } else if (event.target.classList.contains("perkIcon") || event.target.classList.contains("perkName") || event.target.classList.contains("exhaustionIcon")) {
         event.stopPropagation();
         showPerkDetails(event.target.parentNode.dataset);
+
+    } else if (event.target.classList.contains("sidebarTab")) {
+        event.target.parentNode.classList.toggle("open");
     }
 });

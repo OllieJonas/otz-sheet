@@ -149,6 +149,73 @@ label > img {
     height: 1.5rem;
 }
 
+#killerSidebar, #survivorSidebar {
+    font-size: 16pt;
+    z-index: 1;
+    position: fixed;
+    left: -300px;
+    top: 0;
+    height: 100%;
+    width: 300px;
+    padding: 5px;
+    background-color: var(--bg-primary);
+    transition: left .25s ease-in-out;
+    box-shadow: 2px 2px 12px black;
+    box-sizing: border-box;
+}
+
+#killerSidebar.open, #survivorSidebar.open {
+    left: 0;
+}
+
+.sidebarContent > a {
+    color: var(--text-normal);
+    display: block;
+    text-decoration: none;
+}
+
+.sidebarTab {
+    position: absolute;
+    width: 50px;
+    font-size: 12px;
+    height: 50px;
+    background-color: var(--bg-secondary);
+    border-radius: 0 20px 20px 0;
+    top: 20px;
+    box-shadow: 5px 3px 7px -2px black;
+}
+
+.sidebarLeft {
+    left: 100%;
+}
+
+.sidebarContent {
+    padding: 10px;
+    height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+    overscroll-behavior: contain;
+}
+.sidebarContent > a:hover {
+    color: var(--color-anchoring);
+}
+
+.sidebarTab::after {
+    position: absolute;
+    top: 40%;
+    left: 60%;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
+    transform: rotate(-45deg);
+    transition: transform 0.25s linear;
+}
+.open > .sidebarTab::after {
+    transform: rotate(135deg);
+}
+
 
 .characters {
     width: calc(100% - 20px);
