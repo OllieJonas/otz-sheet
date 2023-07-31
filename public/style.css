@@ -179,14 +179,51 @@ label > img {
     width: 50px;
     font-size: 12px;
     height: 50px;
-    background-color: var(--bg-secondary);
+    left: 100%;
+    background-color: var(--bg-darken);
     border-radius: 0 20px 20px 0;
     top: 20px;
     box-shadow: 5px 3px 7px -2px black;
 }
 
-.sidebarLeft {
-    left: 100%;
+.universalSidebar {
+    width: 400px;
+    height: fit-content;
+    padding: 5px;
+    box-shadow: 2px 2px 12px black;
+    box-sizing: border-box;
+    background-color: var(--bg-primary);
+    z-index: 1;
+    position: absolute;
+    right: -400px;
+    top: 10%;
+    transition: right .25s ease-in-out;
+    border-radius: 10px 0 0 10px;
+}
+
+.universalSidebarTab {
+    position: absolute;
+    width: 120px;
+    right: 100%;
+    height: 50px;
+    text-align: right;
+    justify-content: flex-end;
+    background-color: var(--bg-darken);
+    z-index: 1;
+    border-radius: 20px 0 0 20px;
+    cursor: pointer;
+    box-shadow: 5px 3px 7px -2px black;
+}
+
+.open {
+    right: 0;
+}
+
+.universalSidebarText {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50% , -37.5%);
 }
 
 .sidebarContent {
@@ -196,6 +233,7 @@ label > img {
     box-sizing: border-box;
     overscroll-behavior: contain;
 }
+
 .sidebarContent > a:hover {
     color: var(--color-anchoring);
 }
@@ -212,6 +250,7 @@ label > img {
     transform: rotate(-45deg);
     transition: transform 0.25s linear;
 }
+
 .open > .sidebarTab::after {
     transform: rotate(135deg);
 }
@@ -220,7 +259,7 @@ label > img {
 .characters {
     width: calc(100% - 20px);
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(800px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(750px, 1fr));
     justify-content: space-around;
     padding: 10px;
 }
@@ -325,7 +364,7 @@ label > img {
     /*width: 244px;*/
 }
 
-.character > .row-2 > .perks > .perk {
+.perk {
     grid-area: perk;
     margin: 5px;
     padding: 5px;
@@ -334,7 +373,7 @@ label > img {
     cursor: pointer;
 }
 
-.character .exhaustionIcon {
+.exhaustionIcon {
     width: 32px;
     height: 32px;
     position: absolute;
@@ -343,17 +382,17 @@ label > img {
     filter: drop-shadow(2px 2px 4px black);
 }
 
-.character .perkIcon {
+.perkIcon {
     max-height: 64px;
     max-width: 64px;
     filter: drop-shadow(2px 2px 4px black);
 }
 
-.character .perkName {
+.perkName {
     margin-left: 20px;
 }
 
-.character .perkIcon, .perkName {
+.perkIcon, .perkName {
     display: inline-block;
     vertical-align: middle;
 }
@@ -412,4 +451,15 @@ label > img {
 }
 .footer > div {
     margin: 10px;
+}
+
+/*
+    Util
+ */
+
+.no-select {
+    -webkit-user-select: none; /* Chrome, Safari, Opera */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Standard syntax */
 }

@@ -15,9 +15,7 @@ async function getCharacters() {
 
 
 function prepareSidebar(sidebar) {
-    console.log(sidebar === null)
     if (sidebar === null) return;
-    console.log("definitely not null!");
 
     sidebar.addEventListener("click", function (event) {
         if (event.target.tagName === "A") {
@@ -38,7 +36,8 @@ function showPerkDetails(dataset) {
 
     const perkImage = document.createElement("img");
     perkImage.classList.add("modalPerkImage");
-    perkImage.src = perks[perkCharacter][perkName]['icon'];
+
+    perkImage.src = perks[role][perkCharacter][perkName]['icon'];
     perkImage.alt = perkName;
 
     modal.addEventListener("click", event => {
@@ -54,10 +53,13 @@ function showPerkDetails(dataset) {
     // console.log(dataset.perkname);
     // console.log(dataset.character.replace("The ", ""));
 
-    modal.querySelector(".perkName").textContent = perks[perkCharacter][perkName]['name'];
-    modal.querySelector(".perkCharacter").textContent = `${role === "killers" ? "The " : ""} ${perkCharacter} Teachable Perk`
-    modal.querySelector(".perkDescription").innerHTML = perks[perkCharacter][perkName]['description'];
+    modal.querySelector(".perkName").textContent = perks[role][perkCharacter][perkName]['name'];
 
+    let perkCharacterContent = (perkCharacter === "All") ? `${role.charAt(0).toUpperCase() + role.slice(1)} Base Perk` :
+        `${role === "killers" ? "The " : ""} ${perkCharacter} Teachable Perk`
+
+    modal.querySelector(".perkCharacter").textContent = perkCharacterContent;
+    modal.querySelector(".perkDescription").innerHTML = perks[role][perkCharacter][perkName]['description'];
     modal.querySelector(".perkDescription").prepend(perkImage);
 
     modalDepth++;
@@ -71,7 +73,9 @@ getCharacters();
 prepareSidebar(document.querySelector("#killerSidebar"));
 prepareSidebar(document.querySelector("#survivorSidebar"));
 
+
 document.addEventListener("click", function(event) {
+
     if (event.target.classList.contains("perk")) {
         showPerkDetails(event.target.dataset);
 
@@ -79,7 +83,10 @@ document.addEventListener("click", function(event) {
         event.stopPropagation();
         showPerkDetails(event.target.parentNode.dataset);
 
-    } else if (event.target.classList.contains("sidebarTab")) {
+    } else if (event.target.classList.contains("sidebarTab") || (event.target.classList.contains("universalSidebarTab"))) {
         event.target.parentNode.classList.toggle("open");
+
+    } else if (event.target.classList.contains("universalSidebarText")) {
+        event.target.parentNode.parentNode.classList.toggle("open");
     }
 });
