@@ -64,7 +64,7 @@ function showPerkDetails(dataset) {
 
     modalDepth++;
     document.body.appendChild(modal);
-    document.body.classList.add(".blur");
+    document.body.classList.add("blur");
 }
 
 getPerks();
@@ -72,6 +72,40 @@ getCharacters();
 
 prepareSidebar(document.querySelector("#killerSidebar"));
 prepareSidebar(document.querySelector("#survivorSidebar"));
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const radioSelected = document.querySelector('input[name="role"]:checked').value;
+    swapVisibility(radioSelected);
+
+    const selectKillersRadio = document.getElementById('selectKillers');
+    const selectSurvivorsRadio = document.getElementById('selectSurvivors');
+
+    selectKillersRadio.addEventListener("click", function() {
+        swapVisibility('killer');
+    })
+
+    selectSurvivorsRadio.addEventListener("click", function() {
+        swapVisibility('survivor');
+    })
+
+    document.getElementById("guides").style.visibility = "visible";
+})
+
+
+function swapVisibility(selected) {
+    let killerGuides = document.getElementById('killerGuides');
+    let survivorGuides = document.getElementById('survivorGuides');
+
+    if (selected == 'killer') {
+        killerGuides.style.display = "block";
+        survivorGuides.style.display = "none";
+    } else {
+        killerGuides.style.display = "none";
+        survivorGuides.style.display = "block";
+    }
+}
+
 
 
 document.addEventListener("click", function(event) {

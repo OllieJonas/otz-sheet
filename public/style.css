@@ -60,7 +60,6 @@ h2, h3, h4 {
 
 .blur > .body {
     filter: blur(5px) brightness(0.5);
-    background-color: red;
 }
 
 .blur {
@@ -75,16 +74,50 @@ h2, h3, h4 {
 }
 
 .header {
-    align-self: center;
-    padding: 0;
-    text-align: center;
+    display: grid;
+    grid-area: header;
+    grid-template:
+        "example-character title guides"
+        "example-character last-updated guides";
+    grid-template-columns: 30% 40% 30%;
+    width: 100%;
+    margin-bottom: 25px;
 }
+
+.blank {
+    grid-area: blank;
+}
+
+.title {
+    grid-area: title;
+    height: auto;
+}
+
+.lastUpdated {
+    grid-area: last-updated;
+}
+
+.lastUpdated h4 {
+    margin: 10px 0;
+}
+
+.guides {
+    grid-area: guides;
+    visibility: hidden;
+}
+
+.guides div {
+
+}
+
+
 
 /* TAB */
 .tabs {
     width: 100%;
     display: grid;
     grid-template:
+        "header header"
 		"labels labels"
 		"tab tab";
     grid-template-rows: min-content auto;
@@ -127,7 +160,7 @@ input#selectSurvivors:checked + label {
 
 input#selectSurvivors:checked + label { --character: var(--color-survivor); }
 input#selectKillers:checked ~ .survivorTab { display: none; }
-input#selectKillers:checked ~ .killerTab{ --character: var(--color-killer); }
+input#selectKillers:checked ~ .killerTab { --character: var(--color-killer); }
 input#selectSurvivors:checked ~ .killerTab { display: none; }
 input#selectSurvivors:checked ~ .survivorTab{ --character: var(--color-survivor); }
 
@@ -196,7 +229,7 @@ label > img {
     z-index: 1;
     position: absolute;
     right: -400px;
-    top: 10%;
+    top: 11%;
     transition: right .25s ease-in-out;
     border-radius: 10px 0 0 10px;
 }
@@ -209,7 +242,6 @@ label > img {
     text-align: right;
     justify-content: flex-end;
     background-color: var(--bg-darken);
-    z-index: 1;
     border-radius: 20px 0 0 20px;
     cursor: pointer;
     box-shadow: 5px 3px 7px -2px black;
@@ -360,8 +392,6 @@ label > img {
 
 .character > .row-2 > .characterIcon {
     display: flex;
-    /*height: 244px;*/
-    /*width: 244px;*/
 }
 
 .perk {
@@ -423,6 +453,7 @@ label > img {
     height: fit-content;
     max-height: 90%;
     overflow-y: auto;
+    z-index: 10;
     border-radius: 8px;
     background-color: var(--bg-secondary);
 }
