@@ -9,9 +9,12 @@ async function buildPage() {
     let json = JSON.parse(spreadsheetText)
 
     // add guide images manually (really don't like this, but unable to fetch them from Google)
-    json['guides']['survivors'][0]['icon'] = "Hello";
+    json['guides']['survivors'][0]['icon'] = "./assets/images/survivor_sounds_0.png";
+    json['guides']['survivors'][1]['icon'] = "./assets/images/survivor_sounds_1.png";
+    json['guides']['killers'][0]['icon'] = "./assets/images/killer_guide_0.png";
+    json['guides']['killers'][1]['icon'] = "./assets/images/killer_guide_1.png";
 
-    return JSON.parse(spreadsheetText)
+    return json
 }
 
 // Helpers
@@ -20,6 +23,10 @@ handlebars.registerHelper("linearGradient", function(direction, red, green, blue
     let to = `rgba(${red}, ${green}, ${blue}, ${toOpacity})`
     return new handlebars.SafeString(
         `linear-gradient(${direction}, ${from}, ${to})`)
+});
+
+handlebars.registerHelper('isFirst', function(index, options) {
+    return index === 0 ? options.fn(this) : options.inverse(this);
 });
 
 const template = handlebars.compile(fs.readFileSync("template.hbs", {encoding: 'utf8', flag: 'r'}))

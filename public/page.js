@@ -41,9 +41,9 @@ function showPerkDetails(dataset) {
     perkImage.alt = perkName;
 
     modal.addEventListener("click", event => {
-        if (event.target == modal) {
+        if (event.target === modal) {
             modal.remove();
-            if (--modalDepth == 0) {
+            if (--modalDepth === 0) {
                 document.body.classList.remove("blur");
             }
         }
@@ -55,10 +55,9 @@ function showPerkDetails(dataset) {
 
     modal.querySelector(".perkName").textContent = perks[role][perkCharacter][perkName]['name'];
 
-    let perkCharacterContent = (perkCharacter === "All") ? `${role.charAt(0).toUpperCase() + role.slice(1)} Base Perk` :
-        `${role === "killers" ? "The " : ""} ${perkCharacter} Teachable Perk`
-
-    modal.querySelector(".perkCharacter").textContent = perkCharacterContent;
+    modal.querySelector(".perkCharacter").textContent = (perkCharacter === "All") ?
+        `${role.charAt(0).toUpperCase() + role.slice(1)} Base Perk` :
+        `${role === "killers" ? "The " : ""} ${perkCharacter} Teachable Perk`;
     modal.querySelector(".perkDescription").innerHTML = perks[role][perkCharacter][perkName]['description'];
     modal.querySelector(".perkDescription").prepend(perkImage);
 
@@ -74,42 +73,7 @@ prepareSidebar(document.querySelector("#killerSidebar"));
 prepareSidebar(document.querySelector("#survivorSidebar"));
 
 
-document.addEventListener("DOMContentLoaded", function() {
-    const radioSelected = document.querySelector('input[name="role"]:checked').value;
-    swapVisibility(radioSelected);
-
-    const selectKillersRadio = document.getElementById('selectKillers');
-    const selectSurvivorsRadio = document.getElementById('selectSurvivors');
-
-    selectKillersRadio.addEventListener("click", function() {
-        swapVisibility('killer');
-    })
-
-    selectSurvivorsRadio.addEventListener("click", function() {
-        swapVisibility('survivor');
-    })
-
-    document.getElementById("guides").style.visibility = "visible";
-})
-
-
-function swapVisibility(selected) {
-    let killerGuides = document.getElementById('killerGuides');
-    let survivorGuides = document.getElementById('survivorGuides');
-
-    if (selected == 'killer') {
-        killerGuides.style.display = "block";
-        survivorGuides.style.display = "none";
-    } else {
-        killerGuides.style.display = "none";
-        survivorGuides.style.display = "block";
-    }
-}
-
-
-
 document.addEventListener("click", function(event) {
-
     if (event.target.classList.contains("perk")) {
         showPerkDetails(event.target.dataset);
 
@@ -122,5 +86,9 @@ document.addEventListener("click", function(event) {
 
     } else if (event.target.classList.contains("universalSidebarText")) {
         event.target.parentNode.parentNode.classList.toggle("open");
+
+    } else if (event.target.classList.contains("help")) {
+        let example = document.getElementById(event.target.dataset.helpId);
+        example.style.display = example.style.display === "none" ? "block" : "none";
     }
 });

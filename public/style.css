@@ -47,12 +47,15 @@ h2 {
     text-underline-offset: 4px;
     padding-bottom: 0;
 }
+
 h3 {
     font-size: 1.2em;
 }
+
 h4 {
     padding-top: 0;
 }
+
 h2, h3, h4 {
     width: 100%;
     text-align: center;
@@ -73,51 +76,63 @@ h2, h3, h4 {
     height: 100%;
 }
 
-.header {
-    display: grid;
-    grid-area: header;
-    grid-template:
-        "example-character title guides"
-        "example-character last-updated guides";
-    grid-template-columns: 30% 40% 30%;
-    width: 100%;
-    margin-bottom: 25px;
-}
-
-.blank {
-    grid-area: blank;
-}
-
 .title {
-    grid-area: title;
     height: auto;
+    margin-bottom: 15px;
 }
 
-.lastUpdated {
-    grid-area: last-updated;
+.info {
+    display: flex;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    justify-content: center;
+    width: 100%;
 }
 
-.lastUpdated h4 {
-    margin: 10px 0;
+.infoBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 5px 2px 5px;
+    border-radius: 10px;
+    width: fit-content;
+    background-color: var(--bg-secondary);
 }
 
 .guides {
-    grid-area: guides;
-    visibility: hidden;
+    display: flex;
+    align-items: center;
 }
 
-.guides div {
-
+.guide {
+    display: flex;
+    align-items: center;
 }
 
+.guideIcon {
+    height: 64px;
+    width: 64px;
+}
 
+.guideName {
+    font-size: 12pt;
+    margin-left: 5px;
+}
+
+.guideIcon .guideName {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.help {
+    position: relative;
+}
 
 /* TAB */
 .tabs {
     width: 100%;
     display: grid;
     grid-template:
-        "header header"
 		"labels labels"
 		"tab tab";
     grid-template-rows: min-content auto;
@@ -229,7 +244,7 @@ label > img {
     z-index: 1;
     position: absolute;
     right: -400px;
-    top: 11%;
+    top: 13%;
     transition: right .25s ease-in-out;
     border-radius: 10px 0 0 10px;
 }
@@ -287,7 +302,6 @@ label > img {
     transform: rotate(135deg);
 }
 
-
 .characters {
     width: calc(100% - 20px);
     display: grid;
@@ -307,11 +321,15 @@ label > img {
     grid-gap: 0;
 
     background-color: var(--bg-darken);
-    padding: 10px;
+    padding: 10px 5px 0 5px;
     margin: 10px;
     box-shadow: 1px 1px 6px var(--character);
-    height: 300px;
+    height: fit-content;
     border-radius: 5px;
+}
+
+.character * {
+    box-sizing: border-box;
 }
 
 .character:target {
@@ -336,7 +354,6 @@ label > img {
     grid-template-columns: auto 1fr;
     grid-template-rows: auto;
     grid-gap: 20px 5px;
-    position: relative;
 }
 
 .character > .row-1 > .nameAvailability {
@@ -394,13 +411,25 @@ label > img {
     display: flex;
 }
 
+.exampleCharacterIcon {
+    display: flex;
+    height: 180px;
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-primary);
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
 .perk {
     grid-area: perk;
     margin: 5px;
     padding: 5px;
     border-radius: 5px;
-    position: relative;
     cursor: pointer;
+    z-index: -1000;
+    filter: drop-shadow(1px 1px 2px black);
 }
 
 .exhaustionIcon {
@@ -427,6 +456,13 @@ label > img {
     vertical-align: middle;
 }
 
+.examplePerkIcon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 80px;
+    text-align: center;
+}
+
 /* MODAL */
 .modalbg {
     background-color: rgba(0, 0, 0, 0.66);
@@ -442,6 +478,11 @@ label > img {
     align-items: center;
 }
 
+.exampleCharacter {
+    z-index: 9999;
+    position: relative;
+}
+
 .characterBackground {
     background: transparent no-repeat bottom left;
     filter: drop-shadow(4px 4px 8px black);
@@ -453,7 +494,7 @@ label > img {
     height: fit-content;
     max-height: 90%;
     overflow-y: auto;
-    z-index: 10;
+    z-index: 9999;
     border-radius: 8px;
     background-color: var(--bg-secondary);
 }
