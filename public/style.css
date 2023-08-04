@@ -126,6 +126,7 @@ h2, h3, h4 {
 
 .help {
     position: relative;
+    cursor: pointer;
 }
 
 /* TAB */

@@ -1,3 +1,15 @@
+const SURVIVOR_METAINFO = [
+    ["Stealth", "./assets/images/survivor_stealth.png", "Character size and visibility when using their darkest cosmetics."],
+    ["Healthy Noises", "./assets/images/icon_healthy.png", "Noise made when standing still, running and performing actions."],
+    ["Injured Noises", "./assets/images/icon_injured.png", "Loudness, clarity and consistency of grunts when injured."]
+]
+
+
+const KILLER_METAINFO = [
+    ["Movement Speed", "./assets/images/icon_movement_speed.png", ""],
+    ["Terror Radius", "./assets/images/icon_terror_radius.png", ""]
+]
+
 let perks;
 let characters;
 
@@ -66,12 +78,64 @@ function showPerkDetails(dataset) {
     document.body.classList.add("blur");
 }
 
+function showCharacterExample(characterType) {
+    const modalTemplate = document.getElementById("exampleCharacter").content.cloneNode(true);
+    const modal = modalTemplate.querySelector(".modalbg");
+
+    const metaInfo = modal.querySelector(".metaInfo");
+    const metaInfoDivs = metaInfo.querySelectorAll("div");
+    let meta = characterType === "survivors" ? SURVIVOR_METAINFO : KILLER_METAINFO;
+
+    for (let i = 0; i < metaInfoDivs.length; i++) {
+        let div = metaInfoDivs[i];
+
+        if (i >= meta.length) {
+            div.remove();
+            break;
+        }
+
+        let info = meta[i];
+        div.querySelector(".miscText").textContent = info[0];
+        div.querySelector(".miscImage").src = info[1];
+        div.querySelector(".miscImage").alt = info[0];
+    }
+
+    const exampleExtraInfo = modal.querySelector(".exampleExtraInfo");
+
+    if (characterType === "survivors") {
+        exampleExtraInfo.querySelectorAll("p").forEach((div, i) => {
+            let info = meta[i];
+            const bold = document.createElement('b');
+            bold.textContent = `${info[0]}: `;
+            div.textContent = info[2];
+            div.insertBefore(bold, div.firstChild);
+        });
+    } else {
+        exampleExtraInfo.remove();
+    }
+
+
+
+
+    modal.addEventListener("click", event => {
+        if (event.target === modal) {
+            modal.remove();
+            if (--modalDepth === 0) {
+                document.body.classList.remove("blur");
+            }
+        }
+    })
+
+    modalDepth++;
+    document.body.appendChild(modal);
+    document.body.classList.add("blur");
+}
+
 getPerks();
 getCharacters();
 
 prepareSidebar(document.querySelector("#killerSidebar"));
 prepareSidebar(document.querySelector("#survivorSidebar"));
-
 
 document.addEventListener("click", function(event) {
     if (event.target.classList.contains("perk")) {
@@ -88,7 +152,6 @@ document.addEventListener("click", function(event) {
         event.target.parentNode.parentNode.classList.toggle("open");
 
     } else if (event.target.classList.contains("help")) {
-        let example = document.getElementById(event.target.dataset.helpId);
-        example.style.display = example.style.display === "none" ? "block" : "none";
+        showCharacterExample(event.target.dataset.characterType);
     }
 });

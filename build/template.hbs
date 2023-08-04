@@ -24,10 +24,45 @@
             </div>
         </div>
     </template>
+    <template id="exampleCharacter">
+        <div class="modalbg">
+            <div class="character perkModal">
+                <div class="row-1">
+                    <div class="nameAvailability"><h3 class="name" style="width: 100px;">Name</h3><h6 style="background-image: {{linearGradient 'to right' 106 168 79 0.6}}" class="availability">Availability</h6></div>
+                    <div class="metaInfo">
+                        <div class="miscEntryLeftmost"><h6 class="miscText"></h6> <img class="miscImage" src="./assets/images/survivor_stealth.png" alt="stealthIcon"></div>
+                        <div class="miscEntry"><h6 class="miscText"></h6> <img class="miscImage" src="./assets/images/icon_healthy.png" alt="healthyIcon"></div>
+                        <div class="miscEntry"><h6 class="miscText"></h6> <img class="miscImage" src="./assets/images/icon_injured.png" alt="injuredIcon"></div>
+                    </div>
+                </div>
+                <div class="row-2">
+                    <p class="exampleCharacterIcon">Portrait</p>
+                    <div class="perks">
+                        <div style="background-image: linear-gradient(155deg, rgba(91, 15, 0, 1.0), rgba(91, 15, 0, 0.3))" class="perk" id="red-example-survivor" data-role="survivors" data-perkname="example-perk" data-character="example-character">
+                            <p class="examplePerkIcon">Red</p><p class="perkName">Weak / Niche Perk</p>
+                        </div>
+                        <div style="background-image: linear-gradient(155deg, rgba(191, 144, 0, 1.0), rgba(191, 144, 0, 0.3))" class="perk" id="yellow-example-survivor" data-role="survivors" data-perkname="example-perk" data-character="example-character">
+                            <p class="examplePerkIcon">Yellow </p><p class="perkName">Decent Perk</p>
+                        </div>
+                        <div style="background-image: linear-gradient(155deg, rgba(56, 118, 29, 1.0), rgba(56, 118, 29, 0.3))" class="perk" id="green-example-survivor" data-role="survivors" data-perkname="example-perk" data-character="example-character">
+                            <p class="examplePerkIcon">Green </p><p class="perkName">Strong / Useful Perk</p>
+                        </div>
+                        <div style="background-image: linear-gradient(155deg, rgba(17, 85, 204, 1.0), rgba(17, 85, 204, 0.3))" class="perk" id="blue-example-survivor" data-role="survivors" data-perkname="example-perk" data-character="example-character">
+                            <p class="examplePerkIcon">Blue</p><p class="perkName">Meta Perk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="exampleExtraInfo">
+                <p></p>
+                <p></p>
+                <p></p>
+            </div>
+        </div>
+    </template>
 </head>
 
 <body>
-
     <div class="body" id="body" style="">
         <h2 class="title textStrong">Otzdarva's Killer & Survivor Perk Guide</h2>
         <div class="tabs">
@@ -55,7 +90,7 @@
                         </div>
                     </div>
                 </div>
-                <h4 class="help" data-help-id="killerExample">Help</h4>
+                <h4 class="help" data-character-type="killers">Help</h4>
 
                 <nav id="killerSidebar">
                     <div class="sidebarTab sidebarLeft"></div>
@@ -84,8 +119,8 @@
                             <div class="row-1">
                                 <div class="nameAvailability"><h1 class="name">The {{name}}</h1><h6 style="background-image: {{linearGradient 'to right' availability.colour.red availability.colour.green availability.colour.blue 0.6}}" class="availability">{{availability.value}}</h6></div>
                                 <div class="metaInfo">
-                                    <div class="miscEntryLeftmost"><h6 class="miscText">{{movement_speed}}</h6> <img class="miscImage" src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/b/b4/IconHelp_movementSpeed.png" alt="movementSpeedImage"></div>
-                                    <div class="miscEntry"><h6 class="miscText">{{terror_radius}}</h6> <img class="miscImage" src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/e/e0/IconHelp_terrorRadius.png" alt="terrorRadiusImage"></div>
+                                    <div class="miscEntryLeftmost"><h6 class="miscText">{{movement_speed}}</h6> <img class="miscImage" src="./assets/images/icon_movement_speed.png" alt="movementSpeedImage"></div>
+                                    <div class="miscEntry"><h6 class="miscText">{{terror_radius}}</h6> <img class="miscImage" src="./assets/images/icon_terror_radius.png" alt="terrorRadiusImage"></div>
                                 </div>
                             </div>
                             <div class="row-2">
@@ -104,40 +139,6 @@
             </div>
 
             <div class="survivorTab">
-                <div class="modalbg"  id="survivorExample" style="display: none">
-                    <div class="character perkModal" id="example-survivor" style="width: 800px;">
-                        <div class="row-1">
-                            <div class="nameAvailability"><h3 class="name" style="width: 100px;">Name</h3><h6 style="background-image: {{linearGradient 'to right' 106 168 79 0.6}}" class="availability">Availability</h6></div>
-                            <div class="metaInfo">
-                                <div class="miscEntryLeftmost"><h6 class="miscText">Stealth</h6> <img class="miscImage" src="./assets/images/survivor_stealth.png" alt="stealthIcon"></div>
-                                <div class="miscEntry"><h6 class="miscText">Healthy Noises</h6> <img class="miscImage" src="./assets/images/icon_healthy.png" alt="healthyIcon"></div>
-                                <div class="miscEntry"><h6 class="miscText">Injured Noises</h6> <img class="miscImage" src="./assets/images/icon_injured.png" alt="injuredIcon"></div>
-                            </div>
-                        </div>
-                        <div class="row-2">
-                            <p class="exampleCharacterIcon">Portrait</p>
-                            <div class="perks">
-                                <div style="background-image: linear-gradient(155deg, rgba(91, 15, 0, 1.0), rgba(91, 15, 0, 0.3))" class="perk" id="red-example-survivor" data-role="survivors" data-perkname="example-perk" data-character="example-character">
-                                    <p class="examplePerkIcon">Red</p><p class="perkName">Weak / Niche Perk</p>
-                                </div>
-                                <div style="background-image: linear-gradient(155deg, rgba(191, 144, 0, 1.0), rgba(191, 144, 0, 0.3))" class="perk" id="yellow-example-survivor" data-role="survivors" data-perkname="example-perk" data-character="example-character">
-                                    <p class="examplePerkIcon">Yellow </p><p class="perkName">Decent Perk</p>
-                                </div>
-                                <div style="background-image: linear-gradient(155deg, rgba(56, 118, 29, 1.0), rgba(56, 118, 29, 0.3))" class="perk" id="green-example-survivor" data-role="survivors" data-perkname="example-perk" data-character="example-character">
-                                    <p class="examplePerkIcon">Green </p><p class="perkName">Strong / Useful Perk</p>
-                                </div>
-                                <div style="background-image: linear-gradient(155deg, rgba(17, 85, 204, 1.0), rgba(17, 85, 204, 0.3))" class="perk" id="blue-example-survivor" data-role="survivors" data-perkname="example-perk" data-character="example-character">
-                                    <p class="examplePerkIcon">Blue</p><p class="perkName">Meta Perk</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <p><b>Stealth: </b>Character size and visibility when using their darkest cosmetics.</p>
-                        <p><b>Healthy Noises: </b>Noise made when standing still, running and performing actions.</p>
-                        <p><b>Injured Noises: </b> Loudness, clarity and consistency of grunts when injured.</p>
-                    </div>
-                </div>
                 <div class="info">
                     <div class="infoBox">
                         <div class="guides">
@@ -149,6 +150,8 @@
                         </div>
                     </div>
                 </div>
+
+                <h4 class="help" data-character-type="survivors">Help</h4>
 
                 <nav id="survivorSidebar">
                     <div class="sidebarTab sidebarLeft"></div>
