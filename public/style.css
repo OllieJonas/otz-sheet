@@ -81,10 +81,17 @@ h2, h3, h4 {
     margin-bottom: 15px;
 }
 
+.help {
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding-bottom: 38px;
+}
+
 .info {
     display: flex;
-    margin-top: 25px;
-    margin-bottom: 25px;
     justify-content: center;
     width: 100%;
 }
@@ -122,11 +129,6 @@ h2, h3, h4 {
 .guideIcon .guideName {
     display: inline-block;
     vertical-align: middle;
-}
-
-.help {
-    position: relative;
-    cursor: pointer;
 }
 
 /* TAB */
@@ -404,7 +406,7 @@ label > img {
     max-height: 32px;
     max-width: 32px;
     display: inline-block;
-    margin-left: 2px;
+    margin-left: -5px;
     vertical-align: middle;
 }
 
