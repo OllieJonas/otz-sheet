@@ -79,7 +79,9 @@
             </label>
 
             <div class="killerTab">
-                <h4 class="help" data-character-type="killers">Click for an Example</h4>
+                <div class="helpWrapper">
+                    <h4 class="help" data-character-type="killers">Click for an Example</h4>
+                </div>
                 <div class="info">
                     <div class="infoBox">
                         <div class="guides">
@@ -139,7 +141,9 @@
             </div>
 
             <div class="survivorTab">
-                <h4 class="help" data-character-type="survivors">Click for an Example</h4>
+                <div class="helpWrapper">
+                    <h4 class="help" data-character-type="survivors">Click for an Example</h4>
+                </div>
                 <div class="info">
                     <div class="infoBox">
                         <div class="guides">
@@ -191,7 +195,7 @@
                                     {{#each perks as |perk|}}
                                         <div style="background-image: {{linearGradient '155deg' tier.red tier.green tier.blue 0.3}}" class="perk no-select" id="{{name}}" data-role="survivors" data-perkname="{{name}}" data-character="{{character.name}}">
                                             {{#if is_exhaustion_perk}}
-                                                <img class="exhaustionIcon" src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/e/ef/IconStatusEffects_exhausted.png" alt="Exhaustion Symbol">
+                                                <div class="exhaustionPerk"><img class="exhaustionIcon" src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/e/ef/IconStatusEffects_exhausted.png" alt="Exhaustion Symbol"></div>
                                             {{/if}}
                                             <img class="perkIcon" src="{{icon}}" alt="{{name}}"><p class="perkName">{{name}}</p>
                                         </div>

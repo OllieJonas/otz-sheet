@@ -81,10 +81,17 @@ h2, h3, h4 {
     margin-bottom: 15px;
 }
 
+.helpWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
 .help {
     position: relative;
     cursor: pointer;
-    text-align: center;
+    width: fit-content;
     margin-top: 10px;
     margin-bottom: 0;
     padding-bottom: 38px;
@@ -435,13 +442,34 @@ label > img {
     filter: drop-shadow(1px 1px 2px black);
 }
 
+.exhaustionPerk {
+    position: absolute;
+    display: flex;
+    top: 0;
+    right: 5px;
+    align-items: flex-start;
+}
+
 .exhaustionIcon {
     width: 32px;
     height: 32px;
-    position: absolute;
-    top: 0;
-    right: 5px;
     filter: drop-shadow(2px 2px 4px black);
+}
+
+.exhaustionText {
+    font-size: 12pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: fit-content;
+    margin: 0 5px 0 0;
+    align-self: center;
+}
+
+.exhaustionIcon .exhaustionText {
+    display: inline-block;
+    vertical-align: top;
 }
 
 .perkIcon {

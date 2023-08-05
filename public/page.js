@@ -103,6 +103,26 @@ function showCharacterExample(characterType) {
     const exampleExtraInfo = modal.querySelector(".exampleExtraInfo");
 
     if (characterType === "survivors") {
+        // add exhaustion perk icon
+        const exhaustionPerk = modal.querySelector(".perks").querySelectorAll("div")[1];
+        const exhaustionPerkDiv = document.createElement('div');
+        exhaustionPerkDiv.className = "exhaustionPerk";
+
+        const exhaustionText = document.createElement("p");
+        exhaustionText.className = "exhaustionText";
+        exhaustionText.textContent = "Exhaustion Perk";
+
+        const exhaustionIcon = document.createElement("img");
+        exhaustionIcon.className = 'exhaustionIcon';
+        exhaustionIcon.src = "https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/e/ef/IconStatusEffects_exhausted.png";
+        exhaustionIcon.alt = "Exhaustion Symbol";
+
+        exhaustionPerkDiv.appendChild(exhaustionText);
+        exhaustionPerkDiv.appendChild(exhaustionIcon);
+
+        exhaustionPerk.insertBefore(exhaustionPerkDiv, exhaustionPerk.firstChild);
+        console.log(exhaustionPerk);
+        // add extra info on bottom
         exampleExtraInfo.querySelectorAll("p").forEach((div, i) => {
             let info = meta[i];
             const bold = document.createElement('b');
@@ -113,9 +133,6 @@ function showCharacterExample(characterType) {
     } else {
         exampleExtraInfo.remove();
     }
-
-
-
 
     modal.addEventListener("click", event => {
         if (event.target === modal) {
