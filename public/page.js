@@ -121,7 +121,6 @@ function showCharacterExample(characterType) {
         exhaustionPerkDiv.appendChild(exhaustionIcon);
 
         exhaustionPerk.insertBefore(exhaustionPerkDiv, exhaustionPerk.firstChild);
-        console.log(exhaustionPerk);
         // add extra info on bottom
         exampleExtraInfo.querySelectorAll("p").forEach((div, i) => {
             let info = meta[i];
