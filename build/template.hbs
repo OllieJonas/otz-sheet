@@ -182,7 +182,7 @@
                     {{#each survivors.characters as |character|}}
                         <div class="character" id="{{name}}">
                             <div class="row-1">
-                                <div class="nameAvailability"><h1 class="name">{{name}}</h1><h6 style="background-color: rgb({{availability.colour.red}} {{availability.colour.green}} {{availability.colour.blue}})" class="availability">{{availability.value}}</h6></div>
+                                <div class="nameAvailability"><h1 class="name">{{name}}</h1><h6 style="background-image: {{linearGradient 'to right' availability.colour.red availability.colour.green availability.colour.blue 0.6}}" class="availability">{{availability.value}}</h6></div>
                                 <div class="metaInfo">
                                     <div class="miscEntryLeftmost"><h6 class="miscText">{{stealth}}</h6> <img class="miscImage" src="./assets/images/survivor_stealth.png" alt="stealthIcon"></div>
                                     <div class="miscEntry"><h6 class="miscText">{{noise}}</h6> <img class="miscImage" src="./assets/images/icon_healthy.png" alt="healthyIcon"></div>
