@@ -147,6 +147,20 @@ function showCharacterExample(characterType) {
     document.body.classList.add("blur");
 }
 
+function updateTabFromUrl() {
+    const hashIndex = window.location.href.indexOf("#");
+    const fragment = hashIndex !== -1 ? window.location.href.substring(hashIndex + 1) : "";
+    const radioButtons = document.querySelectorAll("input[type=radio][name=role]")
+
+    if (radioButtons.length === 2 && fragment.toLowerCase() === "survivors") {
+        radioButtons[0].checked = false;
+        radioButtons[1].checked = true;
+    }
+}
+
+document.addEventListener("DOMContentLoaded", updateTabFromUrl);
+document.addEventListener("hashchange", updateTabFromUrl);
+
 getPerks();
 getCharacters();
 
