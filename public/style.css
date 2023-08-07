@@ -33,6 +33,7 @@ body {
     font-family: monospace;
     font-size: 13pt;
     height: 100%;
+    overflow-x: hidden;
 }
 
 a {
@@ -322,7 +323,7 @@ label > img {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(620px, 1fr));
     justify-content: space-around;
-    padding: 10px;
+    padding: 0;
 }
 
 .character {
@@ -338,7 +339,7 @@ label > img {
     padding: 10px 5px 0 5px;
     margin: 10px;
     box-shadow: 1px 1px 6px var(--character);
-    height: 290px;
+    height: 280px;
     border-radius: 5px;
 }
 
