@@ -171,19 +171,18 @@ prepareSidebar(document.querySelector("#survivorSidebar"));
 let sidebarHeight = undefined;
 
 document.addEventListener("scroll", function() {
-    const sidebar = document.querySelector(".universalSidebar");
-    console.log(sidebar);
-
-    if (sidebarHeight === undefined) sidebarHeight = sidebar.offsetTop;
+    const sidebars = document.querySelectorAll(".universalSidebar");
+    if (sidebarHeight === undefined) sidebarHeight = sidebars[0].offsetTop;
 
     const scrollPosition = window.scrollY;
 
     if (scrollPosition >= sidebarHeight) {
-        sidebar.classList.add("stickyUniversalSidebar");
+        sidebars.forEach(sb => sb.classList.add("stickyUniversalSidebar"));
     } else {
-        console.log("hi!");
-        sidebar.classList.remove("stickyUniversalSidebar");
-        sidebar.offsetTop = sidebarHeight;
+        sidebars.forEach(sb => {
+            sb.classList.remove("stickyUniversalSidebar");
+            sb.offsetTop = sidebarHeight;
+        });
     }
 });
 
