@@ -167,6 +167,26 @@ getCharacters();
 prepareSidebar(document.querySelector("#killerSidebar"));
 prepareSidebar(document.querySelector("#survivorSidebar"));
 
+// base perks sidebar auto-scrolling
+let sidebarHeight = undefined;
+
+document.addEventListener("scroll", function() {
+    const sidebar = document.querySelector(".universalSidebar");
+    console.log(sidebar);
+
+    if (sidebarHeight === undefined) sidebarHeight = sidebar.offsetTop;
+
+    const scrollPosition = window.scrollY;
+
+    if (scrollPosition >= sidebarHeight) {
+        sidebar.classList.add("stickyUniversalSidebar");
+    } else {
+        console.log("hi!");
+        sidebar.classList.remove("stickyUniversalSidebar");
+        sidebar.offsetTop = sidebarHeight;
+    }
+});
+
 document.addEventListener("click", function(event) {
     if (event.target.classList.contains("perk")) {
         showPerkDetails(event.target.dataset);
