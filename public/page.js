@@ -162,10 +162,10 @@ function updateTabFromUrl() {
     }
 }
 
-function setBasePerkSidebarHeight(sidebar) {
-    let content = sidebar.querySelector(".universalSidebarContent");
-    sidebar.style.height = `${((content.scrollHeight / window.innerHeight) * 100) + 1}%`;
-}
+// function setBasePerkSidebarHeight(sidebar) {
+//     let content = sidebar.querySelector(".universalSidebarContent");
+//     sidebar.style.height = `70%`; // ${((content.scrollHeight / window.innerHeight) * 100) - 40}
+// }
 
 document.addEventListener("DOMContentLoaded", updateTabFromUrl);
 document.addEventListener("hashchange", updateTabFromUrl);
@@ -177,36 +177,38 @@ prepareSidebar(document.querySelector("#killerSidebar"));
 prepareSidebar(document.querySelector("#survivorSidebar"));
 
 // base perks sidebar auto-scrolling
-
-window.onload = function() {
-    setBasePerkSidebarHeight(document.querySelectorAll(".universalSidebar")[isSurvivorChecked ? 1 : 0]);
-}
-
 let sidebarOffset = undefined;
 
-function resetBasePerkSidebar() {
-    isSurvivorChecked = !isSurvivorChecked;
-    let sb = document.querySelectorAll(".universalSidebar")[isSurvivorChecked ? 1 : 0];
-
-    if (sidebarOffset === undefined) sidebarOffset = sb.offsetTop;
-    sb.style.offsetTop = sidebarOffset; // reset sidebar position
-
-    setBasePerkSidebarHeight(sb);
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById("selectKillers").addEventListener('change', function() {
-        if (this.checked) {
-            resetBasePerkSidebar();
-        }
-    })
-
-    document.getElementById("selectSurvivors").addEventListener('change', function() {
-        if (this.checked) {
-            resetBasePerkSidebar();
-        }
-    })
-})
+//
+// window.onload = function() {
+//     setBasePerkSidebarHeight(document.querySelectorAll(".universalSidebar")[isSurvivorChecked ? 1 : 0]);
+// }
+//
+//
+// function resetBasePerkSidebar() {
+//     let sb = document.querySelectorAll(".universalSidebar")[isSurvivorChecked ? 1 : 0];
+//
+//     if (sidebarOffset === undefined) sidebarOffset = sb.offsetTop;
+//     sb.style.offsetTop = sidebarOffset; // reset sidebar position
+//
+//     setBasePerkSidebarHeight(sb);
+// }
+//
+// document.addEventListener('DOMContentLoaded', function() {
+//     document.getElementById("selectKillers").addEventListener('change', function() {
+//         if (this.checked) {
+//             isSurvivorChecked = !isSurvivorChecked;
+//             resetBasePerkSidebar();
+//         }
+//     })
+//
+//     document.getElementById("selectSurvivors").addEventListener('change', function() {
+//         if (this.checked) {
+//             isSurvivorChecked = !isSurvivorChecked;
+//             resetBasePerkSidebar();
+//         }
+//     })
+// })
 
 document.addEventListener("scroll", function() {
     const sidebars = document.querySelectorAll(".universalSidebar");

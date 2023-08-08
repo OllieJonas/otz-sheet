@@ -249,6 +249,7 @@ label > img {
 .universalSidebar {
     width: 400px;
     padding: 5px;
+    height: 70%;
     box-shadow: 2px 2px 12px black;
     box-sizing: border-box;
     background-color: var(--bg-primary);
