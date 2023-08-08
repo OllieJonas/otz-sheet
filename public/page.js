@@ -194,21 +194,9 @@ let sidebarOffset = undefined;
 //     setBasePerkSidebarHeight(sb);
 // }
 //
-// document.addEventListener('DOMContentLoaded', function() {
-//     document.getElementById("selectKillers").addEventListener('change', function() {
-//         if (this.checked) {
-//             isSurvivorChecked = !isSurvivorChecked;
-//             resetBasePerkSidebar();
-//         }
-//     })
-//
-//     document.getElementById("selectSurvivors").addEventListener('change', function() {
-//         if (this.checked) {
-//             isSurvivorChecked = !isSurvivorChecked;
-//             resetBasePerkSidebar();
-//         }
-//     })
-// })
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("selectSurvivors").addEventListener('change', function() {isSurvivorChecked = this.checked;});
+})
 
 document.addEventListener("scroll", function() {
     const sidebars = document.querySelectorAll(".universalSidebar");
