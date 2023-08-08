@@ -242,12 +242,12 @@ label > img {
     background-color: var(--bg-darken);
     border-radius: 0 20px 20px 0;
     top: 20px;
+    cursor: pointer;
     box-shadow: 5px 3px 7px -2px black;
 }
 
 .universalSidebar {
     width: 400px;
-    height: fit-content;
     padding: 5px;
     box-shadow: 2px 2px 12px black;
     box-sizing: border-box;
@@ -263,6 +263,12 @@ label > img {
 .stickyUniversalSidebar {
     position: fixed;
     top: 0;
+}
+
+.universalSidebarContent {
+    height: 100%;
+    overflow-y: auto;
+    overscroll-behavior: contain;
 }
 
 .universalSidebarTab {
@@ -292,8 +298,8 @@ label > img {
 .sidebarContent {
     padding: 10px;
     height: 100%;
-    overflow-y: auto;
     box-sizing: border-box;
+    overflow-y: auto;
     overscroll-behavior: contain;
 }
 

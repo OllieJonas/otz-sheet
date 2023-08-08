@@ -147,15 +147,24 @@ function showCharacterExample(characterType) {
     document.body.classList.add("blur");
 }
 
+let isSurvivorChecked = false;
+
 function updateTabFromUrl() {
     const hashIndex = window.location.href.indexOf("#");
     const fragment = hashIndex !== -1 ? window.location.href.substring(hashIndex + 1) : "";
     const radioButtons = document.querySelectorAll("input[type=radio][name=role]")
 
-    if (radioButtons.length === 2 && fragment.toLowerCase() === "survivors") {
+    let isSurvivor = fragment.toLowerCase() === "survivors";
+    if (radioButtons.length === 2 && isSurvivor) {
         radioButtons[0].checked = false;
         radioButtons[1].checked = true;
+        isSurvivorChecked = true;
     }
+}
+
+function setBasePerkSidebarHeight(sidebar) {
+    let content = sidebar.querySelector(".universalSidebarContent");
+    sidebar.style.height = `${((content.scrollHeight / window.innerHeight) * 100) + 1}%`;
 }
 
 document.addEventListener("DOMContentLoaded", updateTabFromUrl);
@@ -168,20 +177,43 @@ prepareSidebar(document.querySelector("#killerSidebar"));
 prepareSidebar(document.querySelector("#survivorSidebar"));
 
 // base perks sidebar auto-scrolling
-let sidebarHeight = undefined;
+
+window.onload = function() {
+    setBasePerkSidebarHeight(document.querySelectorAll(".universalSidebar")[isSurvivorChecked ? 1 : 0]);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("selectKillers").addEventListener('change', function() {
+        if (this.checked) {
+            isSurvivorChecked = false;
+            setBasePerkSidebarHeight(document.querySelectorAll(".universalSidebar")[0]);
+        }
+    })
+
+    document.getElementById("selectSurvivors").addEventListener('change', function() {
+        if (this.checked) {
+            isSurvivorChecked = true;
+            setBasePerkSidebarHeight(document.querySelectorAll(".universalSidebar")[1]);
+        }
+    })
+})
+
+
+let sidebarOffset = undefined;
 
 document.addEventListener("scroll", function() {
     const sidebars = document.querySelectorAll(".universalSidebar");
-    if (sidebarHeight === undefined) sidebarHeight = sidebars[0].offsetTop;
+
+    if (sidebarOffset === undefined) sidebarOffset = sidebars[isSurvivorChecked ? 1 : 0].offsetTop;
 
     const scrollPosition = window.scrollY;
 
-    if (scrollPosition >= sidebarHeight) {
+    if (scrollPosition >= sidebarOffset) {
         sidebars.forEach(sb => sb.classList.add("stickyUniversalSidebar"));
     } else {
         sidebars.forEach(sb => {
             sb.classList.remove("stickyUniversalSidebar");
-            sb.offsetTop = sidebarHeight;
+            sb.offsetTop = sidebarOffset;
         });
     }
 });
