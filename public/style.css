@@ -333,6 +333,17 @@ label > img {
     padding: 0;
 }
 
+.charModal {
+    padding: 20px 40px;
+    width: 60%;
+    height: fit-content;
+    max-height: 90%;
+    overflow-y: auto;
+    z-index: 9999;
+    border-radius: 8px;
+    background-color: var(--bg-secondary);
+}
+
 .character {
     display: grid;
     grid-template-areas:
@@ -436,8 +447,8 @@ label > img {
 
 .exampleCharacterIcon {
     display: flex;
-    height: 180px;
-    width: 150px;
+    height: 160px;
+    width: 160px;
     justify-content: center;
     align-items: center;
     background-color: var(--bg-primary);
@@ -569,6 +580,76 @@ label > img {
 .footer > div {
     margin: 10px;
 }
+
+/* Mobile */
+
+@media screen and (max-width: 620px) {
+    .characters {
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+    }
+
+    .character {
+        grid-template-rows: auto;
+        height: 290px;
+    }
+
+    .perkModal {
+        overflow-x: hidden;
+    }
+
+    .character > .row-1 {
+        grid-template-areas: "name-availability"
+                             "meta-info";
+        place-items: center;
+    }
+
+    .metaInfo {
+        margin-top: -15px;
+    }
+
+    .sidebarContent {
+    }
+
+    #killerSidebar, #survivorSidebar {
+        left: -250px;
+        width: 250px;
+    }
+
+    .universalSidebar {
+        display: none;
+    }
+
+    .examplePerkIcon {
+        display: none;
+    }
+
+    .modalPerkImage {
+        position: absolute;
+        z-index: -1;
+        right: 0;
+        bottom: 0;
+        height: 300px;
+        width: 300px;
+        opacity: 0.3;
+    }
+
+    .exampleCharacterIcon {
+        width: 120px;
+        height: 120px;
+        display: none;
+    }
+
+    .exhaustionText {
+        display: none;
+    }
+
+    .perkIcon {
+        display: none;
+    }
+
+}
+
 
 /*
     Util
