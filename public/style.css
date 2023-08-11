@@ -617,7 +617,7 @@ label > img {
     }
 
     .universalSidebar {
-        display: none;
+        visibility: hidden;
     }
 
     .examplePerkIcon {
