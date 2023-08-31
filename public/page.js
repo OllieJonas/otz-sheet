@@ -19,11 +19,11 @@ async function getPerks() {
     perks = JSON.parse(perks);
 }
 
-async function getCharacters() {
-    characters = await fetch("https://raw.githubusercontent.com/OllieJonas/scrape-dbd-perks/master/out/characters_LATEST.json");
-    characters = await characters.text();
-    characters = JSON.parse(characters);
-}
+// async function getCharacters() {
+//     characters = await fetch("https://raw.githubusercontent.com/OllieJonas/scrape-dbd-perks/master/out/characters_LATEST.json");
+//     characters = await characters.text();
+//     characters = JSON.parse(characters);
+// }
 
 
 function prepareSidebar(sidebar) {

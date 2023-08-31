@@ -25,9 +25,5 @@ handlebars.registerHelper("linearGradient", function(direction, red, green, blue
         `linear-gradient(${direction}, ${from}, ${to})`)
 });
 
-handlebars.registerHelper('isFirst', function(index, options) {
-    return index === 0 ? options.fn(this) : options.inverse(this);
-});
-
 const template = handlebars.compile(fs.readFileSync("template.hbs", {encoding: 'utf8', flag: 'r'}))
 buildPage().then(data => fs.writeFileSync("../index.html", template(data)))
