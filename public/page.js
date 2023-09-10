@@ -25,6 +25,9 @@ async function getPerks() {
 //     characters = JSON.parse(characters);
 // }
 
+getPerks();
+// getCharacters();
+
 
 function prepareSidebar(sidebar) {
     if (sidebar === null) return;
@@ -169,9 +172,6 @@ function updateTabFromUrl() {
 
 document.addEventListener("DOMContentLoaded", updateTabFromUrl);
 document.addEventListener("hashchange", updateTabFromUrl);
-
-getPerks();
-getCharacters();
 
 prepareSidebar(document.querySelector("#killerSidebar"));
 prepareSidebar(document.querySelector("#survivorSidebar"));
